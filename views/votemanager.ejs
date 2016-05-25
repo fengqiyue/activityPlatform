@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>投票管理</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    <link rel='stylesheet' href='/stylesheets/ionic.min.css' />
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <link href="http://cdn.lydiabox.com/reviewp/semantic.min.css" rel="stylesheet">
+    <link href="http://cdn.lydiabox.com/reviewp/static/app.css" rel="stylesheet">
+    <link rel='stylesheet' href='/stylesheets/barrage.css' />
+  </head>
+
+  <body>
+    <div>
+      <div>
+        <h1 class="title ">投票管理台</h1>
+      </div>
+      <div class="ui bottom attached segment">
+        <table class="ui celled table">
+          <thead class="center aligned">
+            <tr>
+              <th>节目名</th>
+              <th>表演者</th>
+              <th>描述</th>
+            </tr>
+          </thead>
+          <tr class="center aligned">
+            <td>赞歌</td>
+            <td>教会</td>
+            <td>爱的教育</td>
+          </tr>
+          <% programs.forEach(function (program, index) { %>
+          <tr class="center aligned">
+          <td><%= program.name %></td>
+          <td><%= program.player %></td>
+          <td><%= program.description %></td>
+          <% }) %>
+
+          <tfoot>
+            <tr>
+              <th colspan="9">
+                <button  class="ui green right floated button" onclick="showWin()">添加</button>
+              </th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </body>
+
+  <div id="win">
+    <div id="wintitle">添加新的节目<span id="close" onclick="hide()">X</span></div></br>
+    <div id="content">
+      <form  style = "text-align:center" action="/submitprogram" method="post">
+        <input class="wininput" type="text" name="name" autofocus="autofocus" placeholder="节目名">
+        <br /><br />
+        <input class="wininput" type="text" name="player" placeholder="表演者" >
+        <br /><br />
+        <input class="wininput" type="text" name="description" placeholder="描述">
+        <br /><br />
+        <button type="submit" class="ui green right floated button" >提交</button>
+      </form>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+  function showWin(){  
+    var winNode = $("#win");  
+    winNode.fadeIn("slow");
+    }  
+  function hide(){  
+    var winNode = $("#win");  
+    winNode.fadeOut("slow");  
+  } 
+  </script>
+
+</html>

@@ -24,22 +24,23 @@
             <th>投票</th>
             <th>节目名</th>
             <th>表演者</th>
-            <th>描述</th>
+          <!--   <th>描述</th> -->
           </tr>
         </thead>
-        <% programs.forEach(function (program, index) { %>
-        <tr class="center aligned">
-        <td>
-        <form id ="votecheckbox">
-          <input type="checkbox" name="avote" value="winvote" /> 
-        </form>
-        </td>
-        <td><%= program.name %></td>
-        <td><%= program.player %></td>
-        <td><%= program.description %></td>
-        
-        <% }) %>
-      </table>
+        <form action="/voted" method="post" >
+          <% programs.forEach(function (program, index) { %>
+          <tr class="center aligned">
+          <td>
+            <input type="checkbox" name="avote" value="<%= program._id %>" /> 
+          </td>
+          <td><%= program.name %></td>
+          <td><%= program.player %></td>
+          <% }) %>
+        </table>
+        <div style="display:flex;justify-content:flex-end;align-items:center;">
+            <button class="button button-balanced" type="submit">提交</button>
+        <div>
+      </form>
     </div>
 
     </div>  

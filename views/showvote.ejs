@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>投票管理</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    <link rel='stylesheet' href='/stylesheets/ionic.min.css' />
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <link href="http://cdn.lydiabox.com/reviewp/semantic.min.css" rel="stylesheet">
+    <link href="http://cdn.lydiabox.com/reviewp/static/app.css" rel="stylesheet">
+    <link rel='stylesheet' href='/stylesheets/barrage.css' />
+  </head>
+
+  <body>
+    <div>
+      <div>
+        <h1 class="title ">投票结果</h1>
+      </div>
+      <div class="ui bottom attached segment">
+        <table class="ui celled table">
+          <thead class="center aligned">
+            <tr>
+              <th>节目名</th>
+              <th>表演者</th>
+              <th>得票数</th>
+            <!--   <th>描述</th> -->
+            </tr>
+          </thead>
+            <% programs.forEach(function (program, index) { %>
+            <tr class="center aligned">
+            <td><%= program.name %></td>
+            <td><%= program.player %></td>
+            <td><%= program.votenumber %></td>
+            <% }) %>
+        </table>
+      </div>
+    <div>
+  </body>
+</html>

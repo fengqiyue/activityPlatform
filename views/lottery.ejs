@@ -1,48 +1,41 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Lottery</title>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1" />
-    <link rel='stylesheet' href='/stylesheets/ionic.min.css' />
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <title>抽奖</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/index.css">
+    <script src="/javascripts/jquery.min.js"></script>
+    <script src="javascripts/bootstrap.min.js"></script>
+    <script src="javascripts/jquery.mixitup.min.js"></script>
+    <script src="javascripts/index2.js"></script>
   </head>
 
-  <body style="padding-top:25vh;">
-    <h1 id="id" style="text-align:center;font-size:100px;margin-bottom:50px;">00000000</h1>
-    <button class="button button-block button-positive" id="start" style="position:relative;top:50px;opacity:0;max-width:400px;margin:auto;">开始</button>
-    <p id="msg" style="position:fixed;bottom:0;text-align:center;width:100vw;"></p>
+  <body>
+    <div class="container">
+        <div class="row">
+            <h1 class="h2 text-center text-primary">中个大奖吧
+                <button class="btn btn-danger" id="stop">STOP</button>
+            </h1>
+        </div>
+
+        <div id="mixitup" class="row">   <!--此处展示所有参与者的头像-->
+            <div class="mix">
+                <a data-toggle="tooltip" data-placement="bottom" rel="tooltip" target="_blank" href="http://segmentfault.com/u/star_0_rats" title="star_0_rats">
+                    <img class="avatar-64" src="http://sfault-avatar.b0.upaiyun.com/174/332/174332224-1030000000347769_huge128" alt="XXX">
+                </a>
+            </div>
+            <div class="mix">
+                <a data-toggle="tooltip" data-placement="bottom" rel="tooltip" target="_blank" href="http://segmentfault.com/u/binderclip" title="XXX">
+                    <img class="avatar-64" src="http://sfault-avatar.b0.upaiyun.com/249/668/2496685484-1030000000608579_huge128" alt="XXX">
+                </a>
+            </div>
+        </div>
+        <button data-sort="random" id="trig" class="hide btn btn-success sort" style="display:none">Let's Rock !</button>
+    </div>
   </body>
+    
   <script type="text/javascript">
-    $.get('/getId',function(data) {
-      list = data.list;
-      $('#msg').html('参与抽奖人数: '+list.length);
-      $('#start').animate({
-        top: '0',
-        opacity: '1'
-      },300);
-    });
-    $(document).ready(function(){
-      var start = false;
-      $('#start').click(function(event) {
-        if(!list[0]) return;
-        if(!start) {
-          start = true;
-          $(this).removeClass('button-positive');
-          $(this).addClass('button-assertive');
-          $(this).html('停止');
-          loop = setInterval(function() {
-            var i = parseInt(Math.random()*list.length);
-            $('#id').html(list[i]);
-          },50);
-        }else {
-          start = false;
-          $(this).removeClass('button-assertive');
-          $(this).addClass('button-positive');
-          $(this).html('开始');
-          clearInterval(loop);
-        }
-      });
-    });
+
   </script>
 </html>

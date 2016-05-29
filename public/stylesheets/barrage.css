@@ -104,7 +104,7 @@ div[id^="color-item"] {
 #suggest {
     position:absolute;
     left:30%;
-    top:40%
+    top:200px;
     z-index:1
 }
 

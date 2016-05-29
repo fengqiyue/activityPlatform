@@ -23,18 +23,16 @@
         <h1 class="title">照片墙</h1>
         <button class="button button-clear button-positive" onclick="location='./homepage'">返回</button>
       </div>
-      
-      <img id="img" src="images/7.jpg">
-      <img id="img" src="images/7.jpg">
-      <img id="img" src="../uploads/1464176900792.png">
-      
+      <% photos.forEach(function (photo, index) { %>
+          <img id="img" src="uploads/<%= photo.name %>">
+      <% }) %>
 
       <% if(success) { %>
-        <h2 id="suggest" class="button button-outline button-balanced" ><%= success %><h2>
+        <h2 id="suggest" class="button button-balanced" ><%= success %><h2>
       <% } %>
 
       <% if(error) { %>
-        <h2 id="suggest" class="button button-outline button-balanced" ><%= error %><h2>
+        <h2 id="suggest" class="button  button-balanced" ><%= error %><h2>
       <% } %>
 
       <div class="bar bar-footer" id="footer" style="display:flex;justify-content:flex-end;align-items:center;">

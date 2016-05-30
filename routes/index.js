@@ -34,16 +34,16 @@ router.get('/screen', function (req, res) {  //show 弹幕墙
 });
 
 router.get('/barrage', function (req, res) { //弹幕墙
-  res.redirect("https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=http://house.duanpengfei.com:3030/barrage&response_type=code&scope=SCOPE&state=STATE#wechat_redirect");
+  // res.redirect("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxc786068b2326a6b4&redirect_uri=http://house.duanpengfei.com:3030/barrage&response_type=code&scope=SCOPE&state=1#wechat_redirect");
   res.render('barrage');
 });
 
 // router.get('/input', function(req, res) {
 //   res.render('input');
 // });
-router.get('/getOpenid', function (req, res) {
-  var code = 
-});
+// router.get('/getOpenid', function (req, res) {
+//   var code = 
+// });
 
 
 router.get('/homepage', function (req, res){  //主页

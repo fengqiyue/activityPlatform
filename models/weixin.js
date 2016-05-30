@@ -6,7 +6,7 @@ function Weixin (weixin) {
   this.imgurl = weixin.imgurl;  //头像链接
 };
 
-module.exports = Weixins;
+module.exports = Weixin;
 
 //存储节目信息
 Weixin.prototype.save = function(callback) {

@@ -38,7 +38,7 @@ router.get('/barrage', function (req, res) { //弹幕墙
   res.render('barrage');
 });
 
-router.get('weixin', function (req, res){
+router.get('/weixin', function (req, res){
     var code = req.querry.code;
     console.log(code);
     // res.redirect("https://api.weixin.qq.com/sns/oauth2/access_token?appid=

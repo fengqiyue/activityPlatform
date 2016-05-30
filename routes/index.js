@@ -6,6 +6,7 @@ var multer = require("multer");
 var crypto = require('crypto');
 var Program = require('../models/program.js');
 var Photo = require('../models/photo.js');
+var Weixin = require('../models/weixin.js')
 
 // var data = fs.readFileSync(path.join(__dirname, '..', 'id.txt'));
 // data = data.toString();
@@ -40,25 +41,40 @@ router.get('/barrage', function (req, res) { //弹幕墙
 
 router.get('/weixin', function (req, res){
     var code = req.query.code;
-    console.log(code);
+    // console.log(code);
+    
+    request("https://api.weixin.qq.com/sns/oauth2/access_token?appid=wxc786068b2326a6b4&secret=a4117e467157a0712385194f99c28eba&code="+code+"&grant_type=authorization_code", function (error, response, body){
+      var access_token = req.query.access_token;
+      var openid = req.query.openid;
+      request("https://api.weixin.qq.com/sns/userinfo?access_token="+access_token+"&openid="+ openid,function(error, response, body){
+        var nickname = req.query.nickname;
+        var imgurl = req.query.headimgurl;
+        var newWeixin = new Weixin ({
+        name :nickname,
+        imgurl :imgurl
+        });
+        
+        newWeixin.save(function(err, weixin){
+          if(err) {
+          req.flash('error',err);
+          return res.redirect('/barrage');
+      }
+        req.flash('success', '获取信息成功');
+        res.redirect('/barrage');
+        });
+      });
+    });
+
     res.render('weixin',{
       "code":code
     });
-    // res.redirect("https://api.weixin.qq.com/sns/oauth2/access_token?appid=
-    //   wxc786068b2326a6b4&secret=a4117e467157a0712385194f99c28eba&code=
-    //   "+code+"&grant_type=authorization_code");
-    // var access_token = req.body.access_token;
-    // var openid = req.body.openid;
-    // var scope = req.body.scope;
-    // res.redirect("https://api.weixin.qq.com/sns/userinfo?access_token="+access_token+"&openid="+openid);
-    // res.redirect('/barrage');
 });
 
 // router.get('/input', function(req, res) {
 //   res.render('input');
 // });
 
-router.get('/homepage', function (req, res){  //主页
+router.get('/homepage', function (req, res){       //主页
 	res.render('homepage');
 });
 
@@ -130,25 +146,6 @@ router.get('/vote', function (req, res){ //投票界面
     });
 });
 
-// router.post('/addId', function(req, res) {
-// 	var id = req.body.id;
-// 	if(id && !isNaN(id) && id.length==8) {
-// 		for(var i=0, len=list.length;i<len;i++) {
-// 	  	if(list[i]==id) {
-// 	  		res.json({status:null,msg:'添加失败，学号已存在'});
-// 	  		var flag = 1;
-// 	  		break;
-// 	  	}
-// 	  }
-// 	  if(flag) return;
-// 	  list.push(id);console.log(list.length);
-// 	  fs.writeFile('id.txt',list.join(','),function(err){
-//     	if(err) res.json({status:null,msg:'添加失败，服务器写入出错'});
-//     	else res.json({status:'1'});
-// 		});
-// 	}else res.json({status:null,msg:'学号格式怪怪的 + _ +'});
-// });
-
 router.get('/lottery', function (req, res) {
   res.render('lottery');
 });
@@ -203,9 +200,6 @@ router.post('/voted',function (req, res) {  //投票信息处理
     res.redirect('/vote');
     });   
 });
-
-
-
 
 module.exports = router;
 

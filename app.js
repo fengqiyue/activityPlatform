@@ -10,6 +10,7 @@ var session = require('express-session');
 var flash = require('connect-flash');
 var settings = require('./settings');
 var MongoStore = require('connect-mongo')(session);
+var request = require('request');
 
 var app = express();
 

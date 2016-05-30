@@ -44,14 +44,14 @@ router.get('/weixin', function (req, res){
     var code = req.query.code;
     console.log("code="+code);
     request("https://api.weixin.qq.com/sns/oauth2/access_token?appid=wxc786068b2326a6b4&secret=a4117e467157a0712385194f99c28eba&code="+code+"&grant_type=authorization_code", function (error, response, body){
-      var access_token = req.body.access_token;
+      var access_token = body.access_token;
       console.log("access_token="+access_token);
-      var openid = req.body.openid;
+      var openid = body.openid;
       console.log("openid="+openid);
-      request("https://api.weixin.qq.com/sns/userinfo?access_token="+access_token+"&openid="+ openid, function (error, response, body){
-        console.log(req.body);
-        var nickname = req.body.nickname;
-        var imgurl = req.body.headimgurl;
+      request("https://api.weixin.qq.com/sns/userinfo?access_token="+access_token+"&openid="+ openid, function (error, response2, body2){
+        console.log(body2);
+        var nickname = body2.nickname;
+        var imgurl = body2.headimgurl;
         var newWeixin = new Weixin ({
         name :nickname,
         imgurl :imgurl
@@ -63,9 +63,9 @@ router.get('/weixin', function (req, res){
             req.flash('error',err);
             // return res.redirect('/barrage');
           }
-            res.render('weixin',{
-            "code":code
-            });
+          res.render('weixin',{
+          "code":code
+          });
         });
       });
     });

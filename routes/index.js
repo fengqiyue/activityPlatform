@@ -43,18 +43,18 @@ router.get('/barrage', function (req, res) { //弹幕墙
 router.get('/weixin', function (req, res){
     var code = req.query.code;
     // console.log(code);
-    
     request("https://api.weixin.qq.com/sns/oauth2/access_token?appid=wxc786068b2326a6b4&secret=a4117e467157a0712385194f99c28eba&code="+code+"&grant_type=authorization_code", function (error, response, body){
       var access_token = req.query.access_token;
       var openid = req.query.openid;
-      request("https://api.weixin.qq.com/sns/userinfo?access_token="+access_token+"&openid="+ openid,function(error, response, body){
+      request("https://api.weixin.qq.com/sns/userinfo?access_token="+access_token+"&openid="+ openid, function (error, response, body){
         var nickname = req.query.nickname;
         var imgurl = req.query.headimgurl;
         var newWeixin = new Weixin ({
         name :nickname,
         imgurl :imgurl
         });
-        
+        console.log("nickname=" + nickname);
+        console.log("imgurl=" + imgurl);
         newWeixin.save(function(err, weixin){
           if(err) {
           req.flash('error',err);

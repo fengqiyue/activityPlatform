@@ -42,14 +42,15 @@ router.get('/barrage', function (req, res) { //弹幕墙
 
 router.get('weixin', function (req, res){
     var code = req.querry.code;
-    res.redirect("https://api.weixin.qq.com/sns/oauth2/access_token?appid=
-      wxc786068b2326a6b4&secret=a4117e467157a0712385194f99c28eba&code=
-      "+code+"&grant_type=authorization_code");
-    var access_token = req.body.access_token;
-    var openid = req.body.openid;
-    var scope = req.body.scope;
-    res.redirect("https://api.weixin.qq.com/sns/userinfo?access_token="+access_token+"&openid="+openid);
-    res.redirect('/barrage');
+    console.log(code);
+    // res.redirect("https://api.weixin.qq.com/sns/oauth2/access_token?appid=
+    //   wxc786068b2326a6b4&secret=a4117e467157a0712385194f99c28eba&code=
+    //   "+code+"&grant_type=authorization_code");
+    // var access_token = req.body.access_token;
+    // var openid = req.body.openid;
+    // var scope = req.body.scope;
+    // res.redirect("https://api.weixin.qq.com/sns/userinfo?access_token="+access_token+"&openid="+openid);
+    // res.redirect('/barrage');
 });
 
 // router.get('/input', function(req, res) {

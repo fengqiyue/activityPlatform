@@ -21,20 +21,20 @@
       <table class="ui celled table">
         <thead class="center aligned">
           <tr>
-            <th>投票</th>
-            <th>节目名</th>
-            <th>表演者</th>
+            <th style="width:20%">投票</th>
+            <th style="width:40%">节目名</th>
+            <th style="width:40%">表演者</th>
           <!--   <th>描述</th> -->
           </tr>
         </thead>
         <form action="/voted" method="post" >
           <% programs.forEach(function (program, index) { %>
           <tr class="center aligned">
-          <td>
+          <td style="width:20%">>
             <input type="checkbox" name="avote" value="<%= program._id %>" /> 
           </td>
-          <td><%= program.name %></td>
-          <td><%= program.player %></td>
+          <td style="width:40%"><%= program.name %></td>
+          <td style="width:40%"><%= program.player %></td>
           <% }) %>
         </table>
         <div style="display:flex;justify-content:flex-end;align-items:center;">

@@ -116,7 +116,7 @@ router.post('/upload', upload.array('upload'), function (req, res) {      //上�
 	  		return res.redirect('/photowall');
 	  	}
 	    req.flash('success', '上传成功O(∩_∩)O,点我一下');
-        res.redirect('/photowall');
+      res.redirect('/photowall');
     });
 }); 
 
@@ -124,7 +124,8 @@ router.get('/votemanager', function (req, res){       //投票管理界面,获�
     Program.get(null, function (err, programs) {
       if (err) {
         programs = [];
-      }  
+      } 
+      req.flash('success', '投票成功O(∩_∩)O,点我一下');
       res.render('votemanager', {
       	'programs': programs,
      	  'success': req.flash('success').toString(), 
@@ -151,7 +152,7 @@ router.get('/lottery', function (req, res) {
     if (err) {
       weixins = [];
     }  
-    console.log("weixins ========"+weixins);
+    // console.log("weixins ========"+weixins);
     res.render('lottery', { 
       'weixins': weixins
     });

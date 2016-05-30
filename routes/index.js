@@ -48,6 +48,7 @@ router.get('/weixin', function (req, res){
       console.log("access_token="+access_token);
       var openid = req.body.openid;
       console.log("openid="+openid);
+      return 0;
       request("https://api.weixin.qq.com/sns/userinfo?access_token="+access_token+"&openid="+ openid, function (error, response, body){
         var nickname = req.body.nickname;
         var imgurl = req.body.headimgurl;

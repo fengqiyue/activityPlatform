@@ -66,7 +66,7 @@ router.get('/weixin', function (req, res){
             req.flash('error',err);
             // return res.redirect('/barrage');
           }
-          res.render('weixin',{
+          res.render('barrage',{
           "code":code
           });
         });

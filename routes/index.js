@@ -147,15 +147,12 @@ router.get('/vote', function (req, res){ //投票界面
 router.get('/lottery', function (req, res) {
   Weixin.get(null, function (err, weixins) {
     if (err) {
-      weixin = [];
+      weixins = [];
     }  
-    console.log(weixins);
-      res.render('lottery', { 
-        'weixins':weixins
-      });
-   });
-   res.render('lottery', {
-    'weixins':weixins
+    console.log("weixins ========"+weixins);
+    res.render('lottery', { 
+      'weixins': weixins
+    });
    });
 });
 

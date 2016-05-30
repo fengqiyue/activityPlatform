@@ -20,16 +20,18 @@
         </div>
 
         <div id="mixitup" class="row">   <!--此处展示所有参与者的头像-->
+
+            <% weixins.forEach(function (weixin, index) { %>
+               <img id="img" src="<%= weixin.imgurl %>">
+            
+
             <div class="mix">
                 <a data-toggle="tooltip" data-placement="bottom" rel="tooltip" target="_blank" href="http://segmentfault.com/u/star_0_rats" title="star_0_rats">
-                    <img class="avatar-64" src="http://sfault-avatar.b0.upaiyun.com/174/332/174332224-1030000000347769_huge128" alt="XXX">
+                    <img class="avatar-64" src="<%= weixin.imgurl %>" alt="<%= weixin.name %>">
                 </a>
             </div>
-            <div class="mix">
-                <a data-toggle="tooltip" data-placement="bottom" rel="tooltip" target="_blank" href="http://segmentfault.com/u/binderclip" title="XXX">
-                    <img class="avatar-64" src="http://sfault-avatar.b0.upaiyun.com/249/668/2496685484-1030000000608579_huge128" alt="XXX">
-                </a>
-            </div>
+
+            <% }) %>
         </div>
         <button data-sort="random" id="trig" class="hide btn btn-success sort" style="display:none">Let's Rock !</button>
     </div>

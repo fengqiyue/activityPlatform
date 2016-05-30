@@ -68,14 +68,18 @@ router.get('/weixin', function (req, res){
           }
           res.render('barrage');
         });
+        
+        Weixin.get(null, function (err, weixins) {
+          if (err) {
+            weixin = [];
+          }  
+          res.render('lottery', { 
+            'weixins':weixins
+          });
+        });
       });
     });
-
 });
-
-// router.get('/input', function(req, res) {
-//   res.render('input');
-// });
 
 router.get('/homepage', function (req, res){       //主页
 	res.render('homepage');
@@ -123,7 +127,7 @@ router.post('/upload', upload.array('upload'), function (req, res) {      //上�
     });
 }); 
 
-router.get('/votemanager', function (req, res){ //投票管理界面
+router.get('/votemanager', function (req, res){       //投票管理界面,获得需被投票的内容
     Program.get(null, function (err, programs) {
       if (err) {
         programs = [];

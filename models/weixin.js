@@ -33,7 +33,6 @@ Weixin.prototype.save = function(callback) {
       collection.insert(weixin, {
         safe: true
       }, function (err, weixin) {
-      	console.log(weixin);
         mongodb.close();
         if (err) {
           return callback(err);//错误，返回 err 信息

@@ -75,6 +75,7 @@ router.get('/weixin', function (req, res){
           }  
           res.render('lottery', { 
             'weixins':weixins
+            console.log(weixins);
           });
         });
       });

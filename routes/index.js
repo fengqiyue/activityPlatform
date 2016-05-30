@@ -34,8 +34,22 @@ router.get('/screen', function (req, res) {  //show 弹幕墙
 });
 
 router.get('/barrage', function (req, res) { //弹幕墙
-  res.redirect("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxc786068b2326a6b4&redirect_uri=http://house.duanpengfei.com:3030/barrage&response_type=code&scope=SCOPE&state=1#wechat_redirect");
+  res.redirect("https://open.weixin.qq.com/connect/oauth2/authorize?appid=
+    wxc786068b2326a6b4&redirect_uri=http://house.duanpengfei.com:3030/weixin&response_type=
+    code&scope=SCOPE&state=1#wechat_redirect");
   res.render('barrage');
+});
+
+router.get('weixin', function (req, res){
+    var code = req.querry.code;
+    res.redirect("https://api.weixin.qq.com/sns/oauth2/access_token?appid=
+      wxc786068b2326a6b4&secret=a4117e467157a0712385194f99c28eba&code=
+      "+code+"&grant_type=authorization_code");
+    var access_token = req.body.access_token;
+    var openid = req.body.openid;
+    var scope = req.body.scope;
+    res.redirect("https://api.weixin.qq.com/sns/userinfo?access_token="+access_token+"&openid="+openid);
+    res.redirect('/barrage');
 });
 
 // router.get('/input', function(req, res) {
@@ -58,7 +72,6 @@ router.get('/photowall', function (req, res){     //照片墙
 	  });
 	});
 });
-
 
 router.get('/showphotowall', function (req, res) {  //show照片墙
   Photo.get(null, function (err, photos) {

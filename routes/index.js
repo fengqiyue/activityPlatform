@@ -68,16 +68,6 @@ router.get('/weixin', function (req, res){
           }
           res.render('barrage');
         });
-        
-        Weixin.get(null, function (err, weixins) {
-          if (err) {
-            weixin = [];
-          }  
-          console.log(weixins);
-          res.render('lottery', { 
-            'weixins':weixins
-          });
-        });
       });
     });
 });
@@ -155,7 +145,18 @@ router.get('/vote', function (req, res){ //投票界面
 });
 
 router.get('/lottery', function (req, res) {
-  res.render('lottery');
+  Weixin.get(null, function (err, weixins) {
+    if (err) {
+      weixin = [];
+    }  
+    console.log(weixins);
+      res.render('lottery', { 
+        'weixins':weixins
+      });
+   });
+   res.render('lottery', {
+    'weixins':weixins
+   });
 });
 
 router.get('/showvote', function (req, res) {    //投票结果

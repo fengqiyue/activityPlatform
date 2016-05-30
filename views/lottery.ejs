@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="zh-cmn-Hans">
+
+<head>
     <title>抽奖</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
@@ -9,11 +10,11 @@
     <script src="javascripts/bootstrap.min.js"></script>
     <script src="javascripts/jquery.mixitup.min.js"></script>
     <script src="javascripts/index2.js"></script>
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-  </head>
+</head>
 
-  <body>
+<body>
     <div class="container">
+
         <div class="row">
             <h1 class="h2 text-center text-primary">中个大奖吧
                 <button class="btn btn-danger" id="stop">STOP</button>
@@ -21,20 +22,22 @@
         </div>
 
 
-        
-        <div id="mixitup" class="row" >   <!--此处展示所有参与者的头像-->
-            <% weixins.forEach(function (weixin, index) { %>
-            <div class="mix" >
-                <a data-toggle="tooltip" data-placement="bottom" rel="tooltip" target="_blank" href="http://segmentfault.com/u/star_0_rats" title="star_0_rats">
-                    <img class="avatar-64" src="<%= weixin.imgurl %>" alt="<%= weixin.name %>">
-                </a>
-            </div>
+        <div id="mixitup" class="row">
+            <% weixins.forEach(function (weixin) { %>
+                <div class="mix">
+                    <a data-toggle="tooltip" data-placement="bottom" rel="tooltip" target="_blank" href="http://segmentfault.com/u/anamary" title="Anamary">
+                        <img class="avatar-64" src="<%= weixin.imgurl %>" alt="XXX">
+                    </a>
+                </div>
             <% }) %>
         </div>
-        
 
-        <button data-sort="random" id="trig" class="hide btn btn-success sort" style="display:none">Let's Rock !</button>
+
+
+
+        <button data-sort="random" id="trig" class="hide btn btn-success sort">Let's Rock !</button>
     </div>
-  </body>
+</body>
 
 </html>
+

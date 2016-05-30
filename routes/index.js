@@ -139,6 +139,7 @@ router.get('/vote', function (req, res){ //投票界面
       if (err) {
         programs = [];
       }  
+      req.flash('success', '投票成功O(∩_∩)O,点我一下');
       res.render('vote', {
       	'programs': programs,
      	  'success': req.flash('success').toString(), 

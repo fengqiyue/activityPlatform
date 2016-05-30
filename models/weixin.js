@@ -32,11 +32,11 @@ Weixin.prototype.save = function(callback) {
       
       collection.update ({openid : weixin.openid}, weixin ,{
         upsert:true
-      }), function (err, weixin) {
-        mongodb.close();
-        if (err) {
-          return callback(err);//错误，返回 err 信息
-        }
+      }, function (err, weixin) {
+            mongodb.close();
+            if (err) {
+              return callback(err);//错误，返回 err 信息
+            }
         callback(null);//成功！err 为 null，并返回存储后的用户文档
       });
 

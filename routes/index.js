@@ -48,8 +48,8 @@ router.get('/weixin', function (req, res){
       console.log("access_token="+access_token);
       var openid = req.body.openid;
       console.log("openid="+openid);
-      return 0;
       request("https://api.weixin.qq.com/sns/userinfo?access_token="+access_token+"&openid="+ openid, function (error, response, body){
+        console.log(req.body);
         var nickname = req.body.nickname;
         var imgurl = req.body.headimgurl;
         var newWeixin = new Weixin ({
@@ -60,18 +60,16 @@ router.get('/weixin', function (req, res){
         console.log("imgurl=" + imgurl);
         newWeixin.save(function(err, weixin){
           if(err) {
-          req.flash('error',err);
-          return res.redirect('/barrage');
-      }
-        req.flash('success', '获取信息成功');
-        res.redirect('/barrage');
+            req.flash('error',err);
+            // return res.redirect('/barrage');
+          }
+            res.render('weixin',{
+            "code":code
+            });
         });
       });
     });
 
-    res.render('weixin',{
-      "code":code
-    });
 });
 
 // router.get('/input', function(req, res) {

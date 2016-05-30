@@ -203,13 +203,10 @@ router.post('/voted',function (req, res) {  //投票信息处理
       if(err) {
       req.flash('error',err);
       return res.redirect('/vote');
-    }
+      }
       req.flash('success', '投票成功,点我一下消失');
-      console.log(req.flash('success'));
-      res.redirect('/vote',{
-        'success': req.flash('success').toString(), 
-        'error': req.flash('error').toString()
-      });
+
+      res.redirect('/vote');
     });   
 });
 

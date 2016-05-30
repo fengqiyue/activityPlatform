@@ -73,9 +73,9 @@ router.get('/weixin', function (req, res){
           if (err) {
             weixin = [];
           }  
+          console.log(weixins);
           res.render('lottery', { 
             'weixins':weixins
-            console.log(weixins);
           });
         });
       });

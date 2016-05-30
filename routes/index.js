@@ -44,18 +44,14 @@ router.get('/weixin', function (req, res){
     var code = req.query.code;
     console.log("code="+code);
     request("https://api.weixin.qq.com/sns/oauth2/access_token?appid=wxc786068b2326a6b4&secret=a4117e467157a0712385194f99c28eba&code="+code+"&grant_type=authorization_code", function (error, response, body){
-      console.log(body);
-      console.log(response.statusCode);
-      console.log(typeof body);
+      body = typeof body !== 'object' ? JSON.parse(body) : body;
 
       var access_token = body.access_token;
       console.log("access_token="+access_token);
       var openid = body.openid;
       console.log("openid="+openid);
       request("https://api.weixin.qq.com/sns/userinfo?access_token="+access_token+"&openid="+ openid, function (error, response2, body2){
-        console.log(body2);
-        console.log(response2.statusCode);
-        console.log(typeof body2);
+        body2 = typeof body2 !== 'object' ? JSON.parse(body2) : body2;
 
         var nickname = body2.nickname;
         var imgurl = body2.headimgurl;

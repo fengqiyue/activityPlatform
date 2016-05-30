@@ -205,7 +205,7 @@ router.post('/voted',function (req, res) {  //投票信息处理
       req.flash('error',err);
       return res.redirect('/vote');
     }
-    req.flash('success', '投票成功');
+    req.flash('success', '投票成功,点我一下消失');
     res.redirect('/vote');
     });   
 });

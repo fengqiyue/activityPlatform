@@ -39,7 +39,7 @@ router.get('/barrage', function (req, res) { //弹幕墙
 });
 
 router.get('/weixin', function (req, res){
-    var code = req.querry.code;
+    var code = req.query.code;
     console.log(code);
     res.render('weixin',{
       "code":code

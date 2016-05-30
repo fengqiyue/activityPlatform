@@ -6,11 +6,13 @@ function Weixin (weixin) {
   this.imgurl = weixin.imgurl;  //头像链接
 };
 
+
+
 module.exports = Weixin;
 
-//存储节目信息
+//存储信息
 Weixin.prototype.save = function(callback) {
-  //要存入数据库的节目文档
+  //要存入数据库的文档
   var weixin = {
       name: this.name,
       imgurl:this.imgurl,
@@ -31,6 +33,7 @@ Weixin.prototype.save = function(callback) {
       collection.insert(weixin, {
         safe: true
       }, function (err, weixin) {
+      	console.log(weixin);
         mongodb.close();
         if (err) {
           return callback(err);//错误，返回 err 信息

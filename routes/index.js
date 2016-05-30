@@ -55,20 +55,18 @@ router.get('/weixin', function (req, res){
 
         var nickname = body2.nickname;
         var imgurl = body2.headimgurl;
+
         var newWeixin = new Weixin ({
         name :nickname,
         imgurl :imgurl
         });
-        console.log("nickname=" + nickname);
-        console.log("imgurl=" + imgurl);
-        newWeixin.save(function(err, weixin){
+
+        newWeixin.save(function (err, weixin){
           if(err) {
             req.flash('error',err);
-            // return res.redirect('/barrage');
+            return res.redirect('/barrage');
           }
-          res.render('barrage',{
-          "code":code
-          });
+          res.render('barrage');
         });
       });
     });

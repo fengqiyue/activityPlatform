@@ -31,11 +31,11 @@
 
           <% programs.forEach(function (program, index) { %>
           <tr class="center aligned" style="width:100% !important">
-            <td style="width:20% !important">
+            <td style="width:20% !important; display:inline-block !important">
               <input type="checkbox" name="avote" value="<%= program._id %>" /> 
             </td>
-            <td style="width:40% !important"><%= program.name %></td>
-            <td style="width:40% !important"><%= program.player %></td>
+            <td style="width:35% !important; display:inline-block !important"><%= program.name %></td>
+            <td style="width:35% !important; display:inline-block !important"><%= program.player %></td>
           </tr>
           <% }) %>
         </table>

@@ -57,8 +57,10 @@ router.get('/weixin', function (req, res){
         var imgurl = body2.headimgurl;
 
         var newWeixin = new Weixin ({
+
         name :nickname,
-        imgurl :imgurl
+        imgurl :imgurl,
+        openid: openid
         });
 
         newWeixin.save(function (err, weixin){

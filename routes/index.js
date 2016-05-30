@@ -2,11 +2,12 @@ var express = require('express');
 var fs = require('fs');
 var router = express.Router();
 var path = require('path');
-var multer = require("multer");
+var multer = require('multer');
 var crypto = require('crypto');
 var Program = require('../models/program.js');
 var Photo = require('../models/photo.js');
 var Weixin = require('../models/weixin.js')
+var request = require('request');
 
 // var data = fs.readFileSync(path.join(__dirname, '..', 'id.txt'));
 // data = data.toString();

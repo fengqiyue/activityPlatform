@@ -125,7 +125,6 @@ router.get('/votemanager', function (req, res){       //投票管理界面,获�
       if (err) {
         programs = [];
       } 
-      req.flash('success', '投票成功O(∩_∩)O,点我一下');
       res.render('votemanager', {
       	'programs': programs,
      	  'success': req.flash('success').toString(), 
@@ -139,7 +138,6 @@ router.get('/vote', function (req, res){ //投票界面
       if (err) {
         programs = [];
       }  
-      req.flash('success', '投票成功O(∩_∩)O,点我一下');
       res.render('vote', {
       	'programs': programs,
      	  'success': req.flash('success').toString(), 
@@ -207,7 +205,10 @@ router.post('/voted',function (req, res) {  //投票信息处理
       return res.redirect('/vote');
     }
     req.flash('success', '投票成功,点我一下消失');
-    res.redirect('/vote');
+    res.redirect('/vote',{
+      'success': req.flash('success').toString(), 
+      'error': req.flash('error').toString()
+    });
     });   
 });
 

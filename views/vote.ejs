@@ -36,14 +36,6 @@
         </thead>
         <form action="/voted" method="post">
 
-        <% if(success) { %>
-          <h2 id="suggest" class="button button-balanced" ><%= success %><h2>
-        <% } %>
-
-        <% if(error) { %>
-          <h2 id="suggest" class="button  button-balanced" ><%= error %><h2>
-        <% } %>
-
           <% programs.forEach(function (program, index) { %>
           <tr class="center aligned" style="width:100% !important">
             <td style="width:20% !important; display:inline-block !important">
@@ -54,6 +46,14 @@
           </tr>
           <% }) %>
         </table>
+
+        <% if(success) { %>
+          <h2 id="suggest" class="button button-balanced" ><%= success %><h2>
+        <% } %>
+
+        <% if(error) { %>
+          <h2 id="suggest" class="button  button-balanced" ><%= error %><h2>
+        <% } %>
 
         <div style="display:flex;justify-content:flex-end;align-items:center;">
             <button class="button button-balanced" type="submit" id="submit">投票</button>

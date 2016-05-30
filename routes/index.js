@@ -34,7 +34,7 @@ router.get('/screen', function (req, res) {  //show 弹幕墙
 });
 
 router.get('/barrage', function (req, res) { //弹幕墙
-  res.redirect("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxc786068b2326a6b4&redirect_uri=http://house.duanpengfei.com:3030/weixin&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect");
+  res.redirect("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxc786068b2326a6b4&redirect_uri=http://house.duanpengfei.com/weixin&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect");
   res.render('barrage');
 });
 
